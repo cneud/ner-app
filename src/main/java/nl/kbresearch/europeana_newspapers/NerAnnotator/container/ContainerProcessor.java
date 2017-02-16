@@ -25,5 +25,5 @@ public interface ContainerProcessor {
      *         successfully processed
      * @throws IOException
      */
-    public boolean processFile(ContainerContext context, String urlStr, Locale lang, String md5sum) throws IOException;
+    boolean processFile(ContainerContext context, String urlStr, Locale lang, String md5sum) throws IOException;
 }
