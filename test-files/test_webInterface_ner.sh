@@ -27,11 +27,11 @@ fi
 
 clean_test() {
     if [ -f "$CLASSIFIER_DUTCH" ]; then
-        rm $CLASSIFIER_DUTCH
+        rm ${CLASSIFIER_DUTCH}
     fi
 
     if [ -f "$CLASSIFIER_GERMAN" ]; then
-        rm $CLASSIFIER_GERMAN
+        rm ${CLASSIFIER_GERMAN}
     fi
 
     if [ -d "$OUTPUTDIR" ]; then
@@ -56,14 +56,14 @@ test_creation() {
 
     echo "Generating new classification model. ($1)"
     # Result of the process should be "ok"
-    if $DEBUG; then
-        res=`($cmd) 2>&1 && echo "ok"`
+    if ${DEBUG}; then
+        res=`(${cmd}) 2>&1 && echo "ok"`
         echo "res: '$res'"
-        res=`echo $res | rev | cut -d ' ' -f 1 | rev`
+        res=`echo ${res} | rev | cut -d ' ' -f 1 | rev`
         echo "res: '$res'"
     else
-        res=`($cmd) 2>&1 > /dev/null && echo "ok"`
-        res=`echo $res | rev | cut -d ' ' -f 1 | rev`
+        res=`(${cmd}) 2>&1 > /dev/null && echo "ok"`
+        res=`echo ${res} | rev | cut -d ' ' -f 1 | rev`
     fi
 
     if [ "$res" == "ok" ]; then
@@ -93,14 +93,14 @@ test_extraction() {
 
     echo "Applying generated model ($1)."
     # Result of the process should be "ok"
-    if $DEBUG; then
-        res=`($cmd) && echo "ok"`
+    if ${DEBUG}; then
+        res=`(${cmd}) && echo "ok"`
         echo "res: '$res'"
-        res=`echo $res | rev | cut -d ' ' -f 1 | rev`
+        res=`echo ${res} | rev | cut -d ' ' -f 1 | rev`
         echo "res: '$res'"
     else
-        res=`($cmd) 2>&1 > /dev/null && echo "ok"`
-        res=`echo $res | rev | cut -d ' ' -f 1 | rev`
+        res=`(${cmd}) 2>&1 > /dev/null && echo "ok"`
+        res=`echo ${res} | rev | cut -d ' ' -f 1 | rev`
     fi
 
     if [ "$res" == "ok" ]; then
