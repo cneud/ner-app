@@ -164,7 +164,7 @@ public class Alto3ResultHandler implements ResultHandler {
             Element childOfTheChild = altoDocument.createElement("NamedEntityTag");
             childOfTheChild.setAttribute("LABEL", (String) s.get("label"));
             childOfTheChild.setAttribute("DESCRIPTION", (String) s.get("word"));
-            childOfTheChild.setAttribute("ID", "Tag" + (String) s.get("id"));
+            childOfTheChild.setAttribute("ID", "Tag" + s.get("id"));
             child.appendChild(childOfTheChild);
         }
 

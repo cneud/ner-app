@@ -39,7 +39,7 @@ TMPDIR = tempfile.gettempdir()
 
 
 def xml_to_xmltree(alto_filename):
-    ''' Convert xml file to element tree '''
+    """ Convert xml file to element tree """
     alto_file = open(alto_filename, "rb")
     sys.stdout.write("Converting %s to text\n" % alto_filename)
     alto_data = alto_file.read()
@@ -56,7 +56,7 @@ def xml_to_xmltree(alto_filename):
 
 
 def get_textblock_range(xmltree_alto_data, start, end):
-    ''' Get all the block-id's within the range '''
+    """ Get all the block-id's within the range """
     blocks = []
 
     is_in_range = False
@@ -78,10 +78,12 @@ def get_textblock_range(xmltree_alto_data, start, end):
     return blocks
 
 
-def alto_to_disk(alto_filename, blocks=[],
+def alto_to_disk(alto_filename, blocks=None,
                  blocks_range=False, output_filename=""):
 
-    ''' Grab the selected text blocks and write them to disk '''
+    """ Grab the selected text blocks and write them to disk """
+    if blocks is None:
+        blocks = []
     xmltree_alto_data = xml_to_xmltree(alto_filename)
 
     # Check if the given blocks are actually in the ALTO file.
@@ -142,7 +144,7 @@ def alto_to_disk(alto_filename, blocks=[],
     sys.stdout.write("Block words: %s\n" % str(block_words))
 
     text_outputfilename = alto_filename.split(os.sep)[-1].split('.')[0] + ".txt"
-    sys.stdout.write("Writing to %s\n" % (text_outputfilename))
+    sys.stdout.write("Writing to %s\n" % text_outputfilename)
 
     if os.path.isfile(text_outputfilename):
         sys.stdout.write("Warning: %s already exists, overwriting file\n" % text_outputfilename)
@@ -190,7 +192,7 @@ def alto_to_text():
     blocks, alto_files, fetch_via_http, output_filename = parse_arguments()
 
     if blocks:
-        if blocks.find('-') > -1 and blocks.find(',') <= -1:
+        if blocks.find('-') > -1 >= blocks.find(','):
             blocks = [blocks.split('-')[0], blocks.split('-')[1]]
             block_range = True
         else:

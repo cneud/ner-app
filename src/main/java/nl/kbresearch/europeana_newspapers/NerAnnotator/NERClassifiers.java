@@ -52,7 +52,7 @@ public class NERClassifiers {
                 	String langKey = model.substring(0, model.indexOf("="));
                 	String langFile = model.substring(model.indexOf("=")+1);
                     System.out.println(langKey + " -> " + langFile);
-                    if (lang.getLanguage().equals(new Locale(langKey.toString()).getLanguage())) {
+                    if (lang.getLanguage().equals(new Locale(langKey).getLanguage())) {
                         // Populate the classifier with the specified classifier from the command line
                         classifier = CRFClassifier.getClassifier(getDefaultInputModelStream(langFile, lang));
                     }

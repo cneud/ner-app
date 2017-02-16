@@ -42,13 +42,13 @@ public class NERhttp {
         if (config.get("mode").equals("xml")) {
             out.println("<classifiers>");
             for (Object value: config.keySet()) {
-                if ((config.get((String) value) != null) && (((String) value).endsWith("__checksum"))) {
+                if ((config.get(value) != null) && (((String) value).endsWith("__checksum"))) {
                     out.println("<classifier>");
                     out.println("<lang>");
                     out.println(((String) value).split("__")[0]);
                     out.println("</lang>");
                     out.println("<checksum>");
-                    out.println((String) config.get((String) value));
+                    out.println((String) config.get(value));
                     out.println("</checksum>");
                     out.println("</classifier>");
                 }
@@ -57,9 +57,9 @@ public class NERhttp {
         } else {
             out.println("<h2>Available languages :</h2><br/>");
             for (Object value: config.keySet()) {
-                if ((config.get((String) value) != null) && (((String) value).endsWith("__checksum"))) {
+                if ((config.get(value) != null) && (((String) value).endsWith("__checksum"))) {
                     out.println(((String) value).split("__")[0] + " : ");
-                    out.println((String) config.get((String) value) + "</br>");
+                    out.println(config.get(value) + "</br>");
                 }
             }
         }

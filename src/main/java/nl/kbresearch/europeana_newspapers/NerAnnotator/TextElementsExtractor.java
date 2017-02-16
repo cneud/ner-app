@@ -180,8 +180,7 @@ public class TextElementsExtractor {
     public static String cleanWord(String attr) {
         String[] removeChars = {".", ",", ")", "(", ";", "'", "\"", "}", "{"};
         String cleaned = attr;
-        for (int i=0; i < removeChars.length; i++) {
-            String remove = removeChars[i];
+        for (String remove : removeChars) {
             cleaned = cleaned.replace(remove, "");
         }
         return cleaned;
